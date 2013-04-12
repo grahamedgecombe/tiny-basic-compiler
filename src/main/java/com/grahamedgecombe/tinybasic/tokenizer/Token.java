@@ -1,5 +1,7 @@
 package com.grahamedgecombe.tinybasic.tokenizer;
 
+import java.util.Objects;
+
 public final class Token {
 
     private static final String EMPTY_STRING = "";
@@ -62,9 +64,12 @@ public final class Token {
 
     @Override
     public int hashCode() {
-        int result = type.hashCode();
-        result = 31 * result + value.hashCode();
-        return result;
+        return Objects.hash(type, value);
+    }
+
+    @Override
+    public String toString() {
+        return Token.class.getSimpleName() + " [type=" + type + ", value=" + value + "]";
     }
 
 }
