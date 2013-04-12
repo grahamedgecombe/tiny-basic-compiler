@@ -15,4 +15,9 @@ public final class EndStatement extends Statement {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "END";
+    }
+
 }

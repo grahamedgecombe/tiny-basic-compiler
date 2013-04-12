@@ -38,4 +38,15 @@ public final class InputStatement extends Statement {
         return names.hashCode();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder buf = new StringBuilder("INPUT ");
+        for (int i = 0; i < names.size(); i++) {
+            buf.append(names.get(i));
+            if (i != (names.size() - 1))
+                buf.append(", ");
+        }
+        return buf.toString();
+    }
+
 }

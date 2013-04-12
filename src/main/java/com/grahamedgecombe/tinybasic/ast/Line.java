@@ -38,4 +38,9 @@ public final class Line {
         return Objects.hash(number, statement);
     }
 
+    @Override
+    public String toString() {
+        return number + " " + statement;
+    }
+
 }

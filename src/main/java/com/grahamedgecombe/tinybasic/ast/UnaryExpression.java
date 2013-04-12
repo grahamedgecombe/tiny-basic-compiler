@@ -38,4 +38,9 @@ public final class UnaryExpression extends Expression {
         return Objects.hash(operator, expression);
     }
 
+    @Override
+    public String toString() {
+        return "(" + operator + expression + ")";
+    }
+
 }

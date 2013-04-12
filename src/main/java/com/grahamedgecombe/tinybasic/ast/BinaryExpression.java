@@ -44,4 +44,9 @@ public final class BinaryExpression extends Expression {
         return Objects.hash(operator, leftExpression, rightExpression);
     }
 
+    @Override
+    public String toString() {
+        return "(" + leftExpression + " " + operator + " " + rightExpression + ")";
+    }
+
 }

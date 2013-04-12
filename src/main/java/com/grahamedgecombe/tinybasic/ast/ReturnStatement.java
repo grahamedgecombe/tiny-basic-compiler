@@ -15,4 +15,9 @@ public final class ReturnStatement extends Statement {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "RETURN";
+    }
+
 }

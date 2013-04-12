@@ -38,4 +38,15 @@ public final class PrintStatement extends Statement {
         return values.hashCode();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder buf = new StringBuilder("PRINT ");
+        for (int i = 0; i < values.size(); i++) {
+            buf.append(values.get(i));
+            if (i != (values.size() - 1))
+                buf.append(", ");
+        }
+        return buf.toString();
+    }
+
 }

@@ -29,4 +29,9 @@ public final class ImmediateString extends StringExpression {
         return value.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return "\"" + value + "\"";
+    }
+
 }

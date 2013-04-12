@@ -38,4 +38,9 @@ public final class LetStatement extends Statement {
         return Objects.hash(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "LET " + name + " = " + value;
+    }
+
 }

@@ -38,4 +38,13 @@ public final class Program {
         return lines.hashCode();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder buf = new StringBuilder();
+        for (Line line : lines) {
+            buf.append(line).append("\n");
+        }
+        return buf.toString();
+    }
+
 }

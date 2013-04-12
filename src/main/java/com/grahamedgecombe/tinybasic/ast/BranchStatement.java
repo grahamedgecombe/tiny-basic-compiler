@@ -38,4 +38,9 @@ public final class BranchStatement extends Statement {
         return Objects.hash(type, target);
     }
 
+    @Override
+    public String toString() {
+        return type + " " + target;
+    }
+
 }

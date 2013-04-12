@@ -51,4 +51,9 @@ public final class IfStatement extends Statement {
         return Objects.hash(operator, leftExpression, rightExpression, statement);
     }
 
+    @Override
+    public String toString() {
+        return "IF " + leftExpression + " " + operator + " " + rightExpression + " THEN " + statement;
+    }
+
 }

@@ -29,4 +29,9 @@ public final class VariableExpression extends Expression {
         return name.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
