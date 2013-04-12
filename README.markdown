@@ -14,6 +14,9 @@ command will build it and run the unit tests:
 
     mvn compile test
 
+You also need [NASM][nasm] and [GCC][gcc], which are used for assembling the
+output of the compiler and linking it with the standard C library.
+
 Example programs can be found in the `examples` folder. They can be compiled and
 executed like so:
 
@@ -47,3 +50,5 @@ information and licensing terms.
 [maven]: https://maven.apache.org/
 [tinybasic]: https://en.wikipedia.org/wiki/Tiny_BASIC
 [isc]: https://www.isc.org/software/license/
+[gcc]: http://gcc.gnu.org/
+[nasm]: http://www.nasm.us/
