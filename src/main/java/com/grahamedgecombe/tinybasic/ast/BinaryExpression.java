@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class BinaryExpression extends Expression {
@@ -47,6 +51,28 @@ public final class BinaryExpression extends Expression {
     @Override
     public String toString() {
         return "(" + leftExpression + " " + operator + " " + rightExpression + ")";
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        leftExpression.compile(seq);
+        rightExpression.compile(seq);
+        switch (operator) {
+            case PLUS:
+                seq.append(new Instruction(Opcode.ADD));
+                break;
+            case MINUS:
+                seq.append(new Instruction(Opcode.SUB));
+                break;
+            case MULT:
+                seq.append(new Instruction(Opcode.MUL));
+                break;
+            case DIV:
+                seq.append(new Instruction(Opcode.DIV));
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
 }

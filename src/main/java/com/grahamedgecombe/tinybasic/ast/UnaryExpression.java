@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class UnaryExpression extends Expression {
@@ -41,6 +45,23 @@ public final class UnaryExpression extends Expression {
     @Override
     public String toString() {
         return "(" + operator + expression + ")";
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        switch (operator) {
+            case PLUS:
+                expression.compile(seq);
+                break;
+            case MINUS:
+                seq.append(new Instruction(Opcode.PUSH, 0));
+                expression.compile(seq);
+                seq.append(new Instruction(Opcode.SUB));
+                break;
+            default:
+                throw new AssertionError();
+        }
+
     }
 
 }
