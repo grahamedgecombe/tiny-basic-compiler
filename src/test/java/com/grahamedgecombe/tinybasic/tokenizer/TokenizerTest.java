@@ -40,13 +40,13 @@ public final class TokenizerTest {
     @Test
     public void testRelationalOperators() throws IOException {
         try (Tokenizer tokenizer = new Tokenizer("= <= < <> >< > >=")) {
-            assertEquals(new Token(Type.OP_EQ), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_LTE), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_LT), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_NE), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_NE), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_GT), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_GTE), tokenizer.nextToken());
+            assertEquals(new Token(Type.EQ), tokenizer.nextToken());
+            assertEquals(new Token(Type.LTE), tokenizer.nextToken());
+            assertEquals(new Token(Type.LT), tokenizer.nextToken());
+            assertEquals(new Token(Type.NE), tokenizer.nextToken());
+            assertEquals(new Token(Type.NE), tokenizer.nextToken());
+            assertEquals(new Token(Type.GT), tokenizer.nextToken());
+            assertEquals(new Token(Type.GTE), tokenizer.nextToken());
         }
     }
 
@@ -67,10 +67,10 @@ public final class TokenizerTest {
     @Test
     public void testArithmeticOperators() throws IOException {
         try (Tokenizer tokenizer = new Tokenizer("+ - * /")) {
-            assertEquals(new Token(Type.OP_PLUS), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_MINUS), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_MULT), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_DIV), tokenizer.nextToken());
+            assertEquals(new Token(Type.PLUS), tokenizer.nextToken());
+            assertEquals(new Token(Type.MINUS), tokenizer.nextToken());
+            assertEquals(new Token(Type.MULT), tokenizer.nextToken());
+            assertEquals(new Token(Type.DIV), tokenizer.nextToken());
         }
     }
 
@@ -88,7 +88,7 @@ public final class TokenizerTest {
         try (Tokenizer tokenizer = new Tokenizer("PRINT13+37")) {
             assertEquals(new Token(Type.KEYWORD, "PRINT"), tokenizer.nextToken());
             assertEquals(new Token(Type.NUMBER, "13"), tokenizer.nextToken());
-            assertEquals(new Token(Type.OP_PLUS), tokenizer.nextToken());
+            assertEquals(new Token(Type.PLUS), tokenizer.nextToken());
             assertEquals(new Token(Type.NUMBER, "37"), tokenizer.nextToken());
         }
     }

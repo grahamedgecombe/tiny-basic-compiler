@@ -48,13 +48,13 @@ public final class Tokenizer implements Closeable {
             else if (ch == '\n')
                 return new Token(Type.LF);
             else if (ch == '+')
-                return new Token(Type.OP_PLUS);
+                return new Token(Type.PLUS);
             else if (ch == '-')
-                return new Token(Type.OP_MINUS);
+                return new Token(Type.MINUS);
             else if (ch == '*')
-                return new Token(Type.OP_MULT);
+                return new Token(Type.MULT);
             else if (ch == '/')
-                return new Token(Type.OP_DIV);
+                return new Token(Type.DIV);
             else if (ch == '(')
                 return new Token(Type.LPAREN);
             else if (ch == ')')
@@ -64,7 +64,7 @@ public final class Tokenizer implements Closeable {
             else if (ch == '"')
                 return nextStringToken();
             else if (ch == '=')
-                return new Token(Type.OP_EQ);
+                return new Token(Type.EQ);
             else if (ch == '>' || ch == '<')
                 return nextRelationalOperatorToken(ch);
             else if (isAlpha(ch) && !isAlpha(peek()))
@@ -84,24 +84,24 @@ public final class Tokenizer implements Closeable {
         if (first == '>') {
             if (second == '<') {
                 reader.skip(1);
-                return new Token(Type.OP_NE);
+                return new Token(Type.NE);
             } else if (second == '=') {
                 reader.skip(1);
-                return new Token(Type.OP_GTE);
+                return new Token(Type.GTE);
             } else {
-                return new Token(Type.OP_GT);
+                return new Token(Type.GT);
             }
         } else {
             assert first == '<';
 
             if (second == '>') {
                 reader.skip(1);
-                return new Token(Type.OP_NE);
+                return new Token(Type.NE);
             } else if (second == '=') {
                 reader.skip(1);
-                return new Token(Type.OP_LTE);
+                return new Token(Type.LTE);
             } else {
-                return new Token(Type.OP_LT);
+                return new Token(Type.LT);
             }
         }
     }
