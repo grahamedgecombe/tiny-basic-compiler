@@ -1,6 +1,7 @@
 package com.grahamedgecombe.tinybasic.stackir;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,8 +19,7 @@ public final class InstructionSequence {
     }
 
     public void append(Instruction... instructions) {
-        for (Instruction instruction : instructions)
-            this.instructions.add(instruction);
+        this.instructions.addAll(Arrays.asList(instructions));
     }
 
     public List<Instruction> getInstructions() {
