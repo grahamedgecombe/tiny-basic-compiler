@@ -4,8 +4,7 @@ Tiny BASIC Compiler
 Introduction
 ------------
 
-A simple and dumb [Tiny BASIC][tinybasic] compiler that targets x86-64 Linux
-machines.
+A simple [Tiny BASIC][tinybasic] compiler that targets x86-64 Linux machines.
 
 Usage
 -----
