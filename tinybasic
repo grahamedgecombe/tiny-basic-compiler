@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 java -cp target/classes com.grahamedgecombe.tinybasic.TinyBasicCompiler $1 ${1/%.*/.asm}
 nasm -felf64 -o ${1/%.*/.o} ${1/%.*/.asm}
 gcc -lc -o ${1/%.*/} ${1/%.*/.o}
