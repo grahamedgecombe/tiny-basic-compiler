@@ -49,10 +49,12 @@ public final class Program {
         return buf.toString();
     }
 
-    public void compile(InstructionSequence seq) {
+    public InstructionSequence compile() {
+        InstructionSequence seq = new InstructionSequence();
         for (Line line : lines) {
             line.compile(seq);
         }
+        return seq;
     }
 
 }

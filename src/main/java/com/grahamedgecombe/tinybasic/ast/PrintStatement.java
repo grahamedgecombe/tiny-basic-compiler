@@ -61,6 +61,8 @@ public final class PrintStatement extends Statement {
             /* this is rather hacky, but the only place types are important, so it doesn't seem worth improving it */
             seq.append(new Instruction(value instanceof ImmediateString ? Opcode.OUTS : Opcode.OUTI));
         }
+
+        seq.append(new Instruction(Opcode.PUSHS, "\n"), new Instruction(Opcode.OUTS));
     }
 
 }

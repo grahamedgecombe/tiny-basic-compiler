@@ -1,6 +1,8 @@
 .*
 *~
 *.iml
+*.o
+*.asm
 /target
 !.git*
 !.mailmap
