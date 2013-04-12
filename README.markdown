@@ -15,13 +15,28 @@ command will build it and run the unit tests:
 
     mvn compile test
 
-Example programs can be found in the `examples` folder. To build and run one of
-them, run the following commands:
+Example programs can be found in the `examples` folder. They can be compiled and
+executed like so:
 
-    ./tinybasic examples/hello.tb
-    ./examples/hello
-
-If this works, you should see "Hello, world!" printed to the terminal.
+    $ cat examples/squares.tb
+    10 LET X = 1
+    20 PRINT X * X
+    30 LET X = X + 1
+    40 IF X > 10 THEN END
+    50 GOTO 20
+    $ ./tinybasic examples/squares.tb 
+    $ ./examples/squares 
+    1
+    4
+    9
+    16
+    25
+    36
+    49
+    64
+    81
+    100
+    $ 
 
 License
 -------
