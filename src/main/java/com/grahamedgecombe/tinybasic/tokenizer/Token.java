@@ -1,10 +1,9 @@
 package com.grahamedgecombe.tinybasic.tokenizer;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public final class Token {
-
-    private static final String EMPTY_STRING = "";
 
     public enum Type {
         EOF,
@@ -29,23 +28,23 @@ public final class Token {
     }
 
     private final Type type;
-    private final String value;
+    private final Optional<String> value;
 
     public Token(Type type) {
         this.type = type;
-        this.value = EMPTY_STRING;
+        this.value = Optional.empty();
     }
 
     public Token(Type type, String value) {
         this.type = type;
-        this.value = value;
+        this.value = Optional.of(value);
     }
 
     public Type getType() {
         return type;
     }
 
-    public String getValue() {
+    public Optional<String> getValue() {
         return value;
     }
 
