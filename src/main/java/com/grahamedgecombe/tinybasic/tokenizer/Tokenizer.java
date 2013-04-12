@@ -124,10 +124,11 @@ public final class Tokenizer implements Closeable {
         StringBuilder buf = new StringBuilder();
         buf.append((char) first);
         for (;;) {
-            int ch = reader.read();
+            int ch = peek();
             if (!isAlpha(ch))
                 break;
 
+            reader.skip(1);
             buf.append((char) ch);
         }
         return new Token(Type.KEYWORD, buf.toString());
@@ -137,10 +138,11 @@ public final class Tokenizer implements Closeable {
         StringBuilder buf = new StringBuilder();
         buf.append((char) first);
         for (;;) {
-            int ch = reader.read();
+            int ch = peek();
             if (!isDigit(ch))
                 break;
 
+            reader.skip(1);
             buf.append((char) ch);
         }
         return new Token(Type.NUMBER, buf.toString());

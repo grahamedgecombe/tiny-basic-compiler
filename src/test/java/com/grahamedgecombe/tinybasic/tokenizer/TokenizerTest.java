@@ -83,4 +83,14 @@ public final class TokenizerTest {
         }
     }
 
+    @Test
+    public void testWithoutWhitespace() throws IOException {
+        try (Tokenizer tokenizer = new Tokenizer("PRINT13+37")) {
+            assertEquals(new Token(Type.KEYWORD, "PRINT"), tokenizer.nextToken());
+            assertEquals(new Token(Type.NUMBER, "13"), tokenizer.nextToken());
+            assertEquals(new Token(Type.OP_PLUS), tokenizer.nextToken());
+            assertEquals(new Token(Type.NUMBER, "37"), tokenizer.nextToken());
+        }
+    }
+
 }
