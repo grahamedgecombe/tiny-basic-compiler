@@ -191,6 +191,8 @@ public final class StackIRTest {
             new Instruction(Opcode.PUSHI, 123),
             new Instruction(Opcode.OUTI),
             new Instruction(Opcode.PUSHS, "abc"),
+            new Instruction(Opcode.OUTS),
+            new Instruction(Opcode.PUSHS, "\n"),
             new Instruction(Opcode.OUTS)
         );
 
