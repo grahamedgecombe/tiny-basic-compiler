@@ -54,7 +54,7 @@ public final class UnaryExpression extends Expression {
                 expression.compile(seq);
                 break;
             case MINUS:
-                seq.append(new Instruction(Opcode.PUSH, 0));
+                seq.append(new Instruction(Opcode.PUSHI, 0));
                 expression.compile(seq);
                 seq.append(new Instruction(Opcode.SUB));
                 break;

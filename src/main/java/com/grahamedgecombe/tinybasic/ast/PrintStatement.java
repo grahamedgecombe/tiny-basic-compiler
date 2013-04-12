@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,6 +51,16 @@ public final class PrintStatement extends Statement {
                 buf.append(", ");
         }
         return buf.toString();
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        for (StringExpression value : values) {
+            value.compile(seq);
+
+            /* this is rather hacky, but the only place types are important, so it doesn't seem worth improving it */
+            seq.append(new Instruction(value instanceof ImmediateString ? Opcode.OUTS : Opcode.OUTI));
+        }
     }
 
 }

@@ -1,14 +1,16 @@
 package com.grahamedgecombe.tinybasic.stackir;
 
 public enum Opcode {
-    PUSH,
-    POP,
+    PUSHS,
+    PUSHI,
     LOAD,
     STORE,
     ADD,
     MUL,
     SUB,
     DIV,
+    CALL,
+    RET,
     JMP,
     JMPGT,
     JMPGTE,
@@ -18,6 +20,7 @@ public enum Opcode {
     JMPEQ,
     HLT,
     IN,
-    OUT,
+    OUTS,
+    OUTI,
     LABEL
 }

@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class BranchStatement extends Statement {
@@ -41,6 +45,22 @@ public final class BranchStatement extends Statement {
     @Override
     public String toString() {
         return type + " " + target;
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        Opcode opcode;
+        switch (type) {
+            case GOTO:
+                opcode = Opcode.JMP;
+                break;
+            case GOSUB:
+                opcode = Opcode.CALL;
+                break;
+            default:
+                throw new AssertionError();
+        }
+        seq.append(new Instruction(opcode, seq.createLineLabel(target)));
     }
 
 }

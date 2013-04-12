@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 public final class EndStatement extends Statement {
 
     @Override
@@ -18,6 +22,11 @@ public final class EndStatement extends Statement {
     @Override
     public String toString() {
         return "END";
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        seq.append(new Instruction(Opcode.HLT));
     }
 
 }

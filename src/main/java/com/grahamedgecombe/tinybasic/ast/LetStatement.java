@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class LetStatement extends Statement {
@@ -41,6 +45,12 @@ public final class LetStatement extends Statement {
     @Override
     public String toString() {
         return "LET " + name + " = " + value;
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        value.compile(seq);
+        seq.append(new Instruction(Opcode.STORE, name));
     }
 
 }

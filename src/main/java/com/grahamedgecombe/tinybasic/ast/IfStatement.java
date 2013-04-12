@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class IfStatement extends Statement {
@@ -54,6 +58,49 @@ public final class IfStatement extends Statement {
     @Override
     public String toString() {
         return "IF " + leftExpression + " " + operator + " " + rightExpression + " THEN " + statement;
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        leftExpression.compile(seq);
+        rightExpression.compile(seq);
+
+        String thenLabel = seq.createGeneratedLabel();
+        String endLabel = seq.createGeneratedLabel();
+
+        Opcode opcode;
+        switch (operator) {
+            case EQ:
+                opcode = Opcode.JMPEQ;
+                break;
+            case NE:
+                opcode = Opcode.JMPNE;
+                break;
+            case LTE:
+                opcode = Opcode.JMPLTE;
+                break;
+            case LT:
+                opcode = Opcode.JMPLT;
+                break;
+            case GT:
+                opcode = Opcode.JMPGT;
+                break;
+            case GTE:
+                opcode = Opcode.JMPGTE;
+                break;
+            default:
+                throw new AssertionError();
+        }
+
+        seq.append(
+            new Instruction(opcode, thenLabel),
+            new Instruction(Opcode.JMP, endLabel),
+            new Instruction(Opcode.LABEL, thenLabel)
+        );
+
+        statement.compile(seq);
+
+        seq.append(new Instruction(Opcode.LABEL, endLabel));
     }
 
 }

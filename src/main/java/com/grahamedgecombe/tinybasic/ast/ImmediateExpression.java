@@ -40,7 +40,7 @@ public final class ImmediateExpression extends Expression {
 
     @Override
     public void compile(InstructionSequence seq) {
-        seq.append(new Instruction(Opcode.PUSH, value));
+        seq.append(new Instruction(Opcode.PUSHI, value));
     }
 
 }

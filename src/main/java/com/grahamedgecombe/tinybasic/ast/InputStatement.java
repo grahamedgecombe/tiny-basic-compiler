@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,6 +51,16 @@ public final class InputStatement extends Statement {
                 buf.append(", ");
         }
         return buf.toString();
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        for (String name : names) {
+            seq.append(
+                new Instruction(Opcode.IN),
+                new Instruction(Opcode.STORE, name)
+            );
+        }
     }
 
 }

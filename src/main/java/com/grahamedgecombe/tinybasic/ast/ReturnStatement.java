@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 public final class ReturnStatement extends Statement {
 
     @Override
@@ -18,6 +22,11 @@ public final class ReturnStatement extends Statement {
     @Override
     public String toString() {
         return "RETURN";
+    }
+
+    @Override
+    public void compile(InstructionSequence seq) {
+        seq.append(new Instruction(Opcode.RET));
     }
 
 }

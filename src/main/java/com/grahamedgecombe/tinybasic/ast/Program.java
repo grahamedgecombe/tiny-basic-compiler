@@ -1,5 +1,7 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,6 +47,12 @@ public final class Program {
             buf.append(line).append("\n");
         }
         return buf.toString();
+    }
+
+    public void compile(InstructionSequence seq) {
+        for (Line line : lines) {
+            line.compile(seq);
+        }
     }
 
 }

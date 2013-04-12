@@ -1,5 +1,9 @@
 package com.grahamedgecombe.tinybasic.ast;
 
+import com.grahamedgecombe.tinybasic.stackir.Instruction;
+import com.grahamedgecombe.tinybasic.stackir.InstructionSequence;
+import com.grahamedgecombe.tinybasic.stackir.Opcode;
+
 import java.util.Objects;
 
 public final class Line {
@@ -41,6 +45,11 @@ public final class Line {
     @Override
     public String toString() {
         return number + " " + statement;
+    }
+
+    public void compile(InstructionSequence seq) {
+        seq.append(new Instruction(Opcode.LABEL, seq.createLineLabel(number)));
+        statement.compile(seq);
     }
 
 }
